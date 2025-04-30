@@ -161,6 +161,16 @@ function copyCanvasToClipboard(canvas) {
 </div>
 ```
 
+5. Info Panelの実装
+
+```html
+<div class="ak-editor-panel" data-panel-type="info">
+  <p>ここにパネルの内容を書きます。</p>
+</div>
+```
+パネルのタイプに応じて、data-panel-typeをinfoやwarningに変更します。
+
+
 ### 実装時の技術的考慮事項
 
 1. **ブラウザ互換性**
