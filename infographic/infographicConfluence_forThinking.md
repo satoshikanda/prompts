@@ -168,7 +168,7 @@ function copyCanvasToClipboard(canvas) {
   <p>ここにパネルの内容を書きます。</p>
 </div>
 ```
-パネルのタイプに応じて、data-panel-typeをinfoやwarningに変更します。
+パネルのタイプに応じて、data-panel-typeをinfo/note/success/warning/errorに変更します。
 
 
 ### 実装時の技術的考慮事項
