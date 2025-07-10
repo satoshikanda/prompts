@@ -14,6 +14,7 @@
 ├─ infographic/          # インフォグラフィック作成用プロンプト
 │  ├─ infographic_forThinking.md             # CoT (思考フェーズ + 最終出力) 版
 │  └─ infographicConfluence_forThinking.md   # Confluence  向け
+│  └─ infographicPrint_forThinking.md        # Wordへの変換を前提とした編集・印刷用
 ├─ chat/                 # AIアシスタントとの対話用プロンプト
 │  └─ custom_prompt.md                     # 論理的思考者AIアシスタント用プロンプト
 ├─ summarize/            # 要約・議事録作成用プロンプト
@@ -31,7 +32,7 @@
 | --- | --- |
 | `infographic_forThinking.md` | 通常のインフォグラフィック生成向け。思考フェーズ→HTML 出力を 1 プロンプトで実行。 |
 | `infographicConfluence_forThinking.md` | Confluence ページに貼り付ける用途の派生版。 |
-
+| `infographicPrint_forThinking.md` | Wordへの変換を前提とした編集・印刷用。ビジュアライズは最小限になります。 |
 #### インフォグラフィックス作成プロンプトの概要
 
 特定のテーマに沿ったドキュメントや音声データ、あるいはその文字起こしを入力にしてください。
