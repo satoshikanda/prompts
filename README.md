@@ -13,7 +13,7 @@
 .
 ├─ infographic/          # インフォグラフィック作成用プロンプト
 │  ├─ infographic_forThinking.md             # CoT (思考フェーズ + 最終出力) 版
-│  └─ infographicConfluence_forThinking.md   # Confluence  向け
+│  ├─ infographicConfluence_forThinking.md   # Confluence  向け
 │  └─ infographicPrint_forThinking.md        # Wordへの変換を前提とした編集・印刷用
 ├─ chat/                 # AIアシスタントとの対話用プロンプト
 │  └─ custom_prompt.md                     # 論理的思考者AIアシスタント用プロンプト
@@ -70,6 +70,7 @@ AI アシスタントとの対話品質を向上させるためのプロンプ�
 3. プロンプト内の指示に従い、モデルが思考フェーズと最終 HTML を出力します。
 
  **Attention:** 
+
 - Gemini 2.5 ProまたはClaude Sonnet 4 または Claude Opus 4を強く推奨します。OpenAIモデルを使う必要がある場合は、GPT-4.1を推奨します。
 - GPT-4.1などのCoT以外のモデルでもインフォグラフィックスの生成は可能ですが、思考フェーズと最終出力を分けて出力するように指示してください。
 
