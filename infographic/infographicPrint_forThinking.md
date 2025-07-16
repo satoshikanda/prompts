@@ -50,7 +50,7 @@
           em { font-style: italic; }
           .info-panel { border: 1px solid #cccccc; padding: 10px; }
           .info-panel.info { background-color: #f0f0f0; }
-          /* 他のシンプルCSS: 背景色は#f0f0f0以下に制限、linear-gradientはグレー階調 */
+          /* 他のシンプルCSS: 背景色は#f0f0f0（薄いグレー）と同等かそれより暗い色に制限。linear-gradientはグレー階調のみ使用可能 */
       </style>
   </head>
   <body>
