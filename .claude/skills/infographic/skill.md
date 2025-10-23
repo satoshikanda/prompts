@@ -6,12 +6,24 @@
 
 ### 1. プロンプト仕様の読み込み
 
-まず、最新のプロンプト仕様を読み込んでください：
+まず、リモートから最新の情報を取得し、プロンプト仕様を読み込んでください：
 
 ```bash
-git fetch origin forGPT5
-git show origin/forGPT5:infographic/infographic_forCLI.md
+# リモートから最新の情報を取得
+git fetch origin
+
+# mainブランチとforGPT5ブランチの両方を確認
+# まずmainブランチを確認
+git show origin/main:infographic/infographic_forCLI.md 2>/dev/null
+
+# mainブランチに存在しない場合、forGPT5ブランチを確認
+git show origin/forGPT5:infographic/infographic_forCLI.md 2>/dev/null
 ```
+
+**プロンプト選択の優先順位：**
+1. まず`origin/main`ブランチを確認
+2. mainブランチに存在しない場合は`origin/forGPT5`ブランチを確認
+3. どちらかで見つかったプロンプトを使用
 
 このプロンプトには、処理の全手順、制約、検査項目、出力形式などが定義されています。
 

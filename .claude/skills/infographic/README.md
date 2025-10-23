@@ -6,7 +6,7 @@
 
 ## 特徴
 
-- **動的プロンプト読み込み**: 実行時に`forGPT5`ブランチから最新のプロンプト仕様（`infographic/infographic_forCLI.md`）を読み込むため、プロンプトの更新が自動的に反映されます
+- **動的プロンプト読み込み**: 実行時にリモートから最新のプロンプト仕様（`infographic/infographic_forCLI.md`）を読み込むため、プロンプトの更新が自動的に反映されます（mainブランチを優先、次にforGPT5ブランチを確認）
 - **精緻な実行計画**: プロンプトの指示を詳細に解析し、確実に実施するための計画を作成
 - **完全なプロンプト準拠**: プロンプトに記載されている全ての工程、検査項目、制約事項を忠実に実行
 - **汎用性**: プロンプトの内容が変更されても、スキル自体を修正する必要なし
@@ -22,7 +22,7 @@
 
 スキルが起動すると、以下の流れで処理が進みます：
 
-1. **プロンプト仕様の読み込み**: `forGPT5`ブランチから最新のプロンプト仕様を取得
+1. **プロンプト仕様の読み込み**: リモートから最新のプロンプト仕様を取得（mainブランチを優先、次にforGPT5ブランチ）
 2. **実行計画の作成**: プロンプトを分析し、実施すべき全ての工程と検査項目を計画化
 3. **入力の取得**: プロンプトで指定された形式でユーザー入力を依頼
 4. **処理の実行**: 計画に従って処理を実行
@@ -34,7 +34,11 @@
 
 ## プロンプト仕様
 
-このスキルは`forGPT5`ブランチの`infographic/infographic_forCLI.md`に定義されたプロンプト仕様に従って動作します。
+このスキルは`infographic/infographic_forCLI.md`に定義されたプロンプト仕様に従って動作します。
+
+**プロンプトの取得元：**
+1. 優先: `origin/main`ブランチ
+2. 代替: `origin/forGPT5`ブランチ
 
 プロンプト仕様には以下が含まれます：
 - 目的と出力形式
@@ -43,7 +47,10 @@
 - 制約事項と注意点
 - その他、生成に必要な全ての情報
 
-**重要**: スキルファイルにはプロンプトの具体的な内容は記載されていません。これにより、プロンプトが更新されてもスキル自体を修正する必要がなくなります。
+**重要**:
+- スキルファイルにはプロンプトの具体的な内容は記載されていません
+- リモートから最新のプロンプトを取得するため、常に最新の仕様に従います
+- プロンプトが更新されてもスキル自体を修正する必要がありません
 
 ## 仕組み
 
@@ -69,8 +76,13 @@
 ### プロンプトが見つからない
 
 ```bash
+# リモートから最新情報を取得
+git fetch origin
+
+# mainブランチを確認
+git ls-tree -r --name-only origin/main | grep infographic
+
 # forGPT5ブランチを確認
-git fetch origin forGPT5
 git ls-tree -r --name-only origin/forGPT5 | grep infographic
 ```
 
@@ -79,6 +91,10 @@ git ls-tree -r --name-only origin/forGPT5 | grep infographic
 プロンプト仕様を確認してください：
 
 ```bash
+# mainブランチのプロンプトを確認
+git show origin/main:infographic/infographic_forCLI.md
+
+# または forGPT5ブランチのプロンプトを確認
 git show origin/forGPT5:infographic/infographic_forCLI.md
 ```
 
@@ -91,7 +107,9 @@ git show origin/forGPT5:infographic/infographic_forCLI.md
 ```
 ユーザー呼び出し
   ↓
-プロンプト読み込み (forGPT5ブランチから)
+git fetch (リモートから最新情報を取得)
+  ↓
+プロンプト読み込み (origin/main → origin/forGPT5の順で確認)
   ↓
 実行計画作成 (プロンプトを分析)
   ↓
@@ -114,11 +132,12 @@ git show origin/forGPT5:infographic/infographic_forCLI.md
 
 プロンプト仕様は別の場所に保管：
 ```
-infographic/infographic_forCLI.md  # forGPT5ブランチ
+infographic/infographic_forCLI.md  # origin/mainブランチ（優先）またはorigin/forGPT5ブランチ
 ```
 
 ## 更新履歴
 
+- 2025-10-23: リモートから取得＆複数ブランチ対応（mainブランチを優先、forGPT5ブランチを代替として確認）
 - 2025-10-23: 汎用的な設計に変更（プロンプトの具体的内容をスキルから分離）
 
 ## ライセンス
