@@ -38,6 +38,7 @@
 * 計画書(plan_doc)は<head>内で<meta charset="utf-8">と<meta name="viewport">の直後に<template>で埋め込む（非表示）。
 * 外部依存なし。外部画像・Webフォント・CDN禁止。
 * 例外: SVGからPNGへの変換処理のための`<script>`タグは許可する。変換用スクリプトは`</body>`の直前に配置し、イベント属性は使用しない。
+* ベースとなる本文フォントは、ローカルにインストールされている Noto 系フォント（Noto Sans / Noto Sans JP）を最優先に用いる font-family スタックをCSSで指定し、未インストール環境では日本語向けシステムフォントへフォールバックする。外部からフォントファイルを取得してはならない。
 * CSSとSVGはインライン。<details>は可だがopenで展開しておく。
 * 入力にない提案やネクストアクションは含めない。必要最小の仮定は本文の「前提」に短く明示。
 * この指示文は出力に含めない。
@@ -446,6 +447,20 @@
   <template id="plan_doc" ...>…</template>
   <style>
     *,*::before,*::after{box-sizing:border-box}
+    html{
+      font-family:
+        "Noto Sans",
+        "Noto Sans JP",
+        "Hiragino Sans",
+        "Yu Gothic",
+        "Meiryo",
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      line-height:1.6;
+    }
     img,svg{max-width:100%;height:auto;display:block}
     :focus-visible{outline:2px solid currentColor;outline-offset:2px}
     @media print{
