@@ -66,13 +66,13 @@ AI アシスタントとの対話品質を向上させるためのプロンプ�
 
 ## 使い方
 
-1. 任意の LLM (例:Gemini 2.5 Pro , Claude Sonnet 4.5,GPT‑5-Codex) に対して、対象プロンプトの Markdown 全文をそのまま入力します。
+1. 任意の LLM (例:Gemini 3 Pro , Claude Sonnet 4.5,GPT‑5.2-Codex) に対して、対象プロンプトの Markdown 全文をそのまま入力します。
 2. 続けて "コンテンツ" などの必須パラメータを入力してください。
 3. プロンプト内の指示に従い、モデルが思考フェーズと最終 HTML を出力します。
 
  **Attention:** 
 
-- Gemini 2.5 ProまたはClaude Sonnet 4 または Claude Opus 4を強く推奨します。OpenAIモデルを使う必要がある場合は、GPT-4.1を推奨します。
+- Gemini 2.5 ProまたはClaude Sonnet 4 または Claude Opus 4を強く推奨します。
 - GPT-4.1などのCoT以外のモデルでもインフォグラフィックスの生成は可能ですが、思考フェーズと最終出力を分けて出力するように指示してください。
 
 ## ライセンス
